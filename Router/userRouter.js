@@ -1,9 +1,8 @@
-const { postData, display } = require('../Controller/userController')
+const { postData, deleteData } = require('../Controller/userController')
 
 
 const router=require('express').Router()
 
 router.post('/storeData',postData)
-router.post('/getData',display)
-
+router.delete('/removeDatabase/:id',deleteData)
 module.exports=router

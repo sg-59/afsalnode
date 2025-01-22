@@ -1,3 +1,4 @@
+
 const user=require('../Model/userSchema')
 
 const postData=async(req,res)=>{
@@ -12,14 +13,35 @@ const postData=async(req,res)=>{
     }  
 }
 
-const display=async(req,res)=>{
-    console.log("get Data");
-    res.send("get data")
+const getData=async(req,res)=>{
+    try{
+const a=await user.find()
+res.send(a)
+    }catch(err){
+console.log(err);
+
+    }
 }
 
-const hello=async(req,res)=>{
-    console.log("hello page");
+const getSingleData=async(req,res)=>{
+
+    console.log(req.params.userId);
     
+    try{
+const a=await user.findById(req.params.userId)
+res.send(a)
+    }catch(err){
+
+    }
 }
 
-module.exports={postData,display,hello}
+const deleteData=async(req,res)=>{
+    try{
+await user.findByIdAndDelete(req.params.id)
+res.send('item deleted')
+    }catch(err){
+
+    }
+}
+
+module.exports={postData,getData,getSingleData,deleteData}
