@@ -1,15 +1,18 @@
 
 const user=require('../Model/userSchema')
+const argon=require('argon2')
+
 
 const postData=async(req,res)=>{
     console.log(req.body);
+    req.body.password=await argon.hash(req.body.password)
     
     try{
-        await user.create({name:req.body.username,...req.body})
-        res.send('success')
+     
+      await user.create(req.body)
+       return res.status(200).json({status:"success"})
     }catch(err){
-        console.log("err");
-        
+       return res.status(500).json({status:"failed"})
     }  
 }
 

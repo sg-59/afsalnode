@@ -4,6 +4,9 @@ const mongoose=require('mongoose')
 const dotenv=require('dotenv')
 const userRouter=require('./Router/userRouter')
 const demoRouter=require('./Router/demoRouter')
+const cors=require('cors')
+
+app.use(cors())
 
 dotenv.config()
 
