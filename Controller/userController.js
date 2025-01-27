@@ -4,7 +4,7 @@ const argon=require('argon2')
 
 
 const postData=async(req,res)=>{
-    console.log(req.body);
+    console.log("bcvdvchdvhcvjhdvhchdvhcvhdgvcghvdgh",req.body);
     req.body.password=await argon.hash(req.body.password)
     
     try{
