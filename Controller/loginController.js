@@ -14,8 +14,9 @@ if(!Findmail){
 if (await argon.verify(Findmail.password, req.body.password)) {
   const token=await jwt.sign({id:Findmail._id},process.env.secKey,{expiresIn:"1d"})
   console.log("token ",token);
+
   
-   return res.status(200).json({userId:Findmail._id,token:token,message:"loginsuccess"})
+   return res.status(200).json({token:token,userId:Findmail._id,message:"loginsuccess"})
   } else {
    return res.status(401).json("Password and email does'nt match")
   }
