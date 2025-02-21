@@ -7,6 +7,8 @@ const demoRouter=require('./Router/demoRouter')
 const logRouter=require('./Router/LoginRouter')
 const cors=require('cors')
 
+
+
 app.use(cors())
 
 dotenv.config()
